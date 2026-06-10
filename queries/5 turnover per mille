@@ -1,0 +1,10 @@
+-- revenue generated per 1000 emails sent
+SELECT
+  journey_id,
+  journey_name,
+  sent_nb,
+  turnover,
+  ROUND(SAFE_DIVIDE(turnover, sent_nb) * 1000, 2) AS turnover_per_mille
+FROM course14.gwz_mail
+WHERE journey_name LIKE '%_nl_%'
+ORDER BY turnover_per_mille DESC;
