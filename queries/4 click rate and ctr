@@ -1,0 +1,21 @@
+-- ctr as a ratio (clicks / opens)
+SELECT
+  journey_id,
+  journey_name,
+  opening_nb,
+  click_nb,
+  SAFE_DIVIDE(click_nb, opening_nb) AS ctr
+FROM course14.gwz_mail
+WHERE journey_name LIKE '%_nl_%'
+ORDER BY ctr DESC;
+
+-- ctr as a percentage
+SELECT
+  journey_id,
+  journey_name,
+  opening_nb,
+  click_nb,
+  ROUND(SAFE_DIVIDE(click_nb, opening_nb) * 100, 2) AS ctr_pct
+FROM course14.gwz_mail
+WHERE journey_name LIKE '%_nl_%'
+ORDER BY ctr_pct DESC;
