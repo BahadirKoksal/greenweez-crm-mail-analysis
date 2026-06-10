@@ -1,0 +1,55 @@
+-- campaigns ranked by emails sent
+SELECT
+  journey_id,
+  journey_name,
+  sent_nb
+FROM course14.gwz_mail
+ORDER BY sent_nb DESC;
+
+-- campaigns with more than 10,000 opens
+SELECT
+  journey_id,
+  journey_name,
+  sent_nb,
+  opening_nb
+FROM course14.gwz_mail
+WHERE opening_nb >= 10000
+ORDER BY opening_nb DESC;
+
+-- top 10 campaigns by clicks
+SELECT
+  journey_id,
+  journey_name,
+  sent_nb,
+  opening_nb,
+  click_nb
+FROM course14.gwz_mail
+ORDER BY click_nb DESC
+LIMIT 10;
+
+-- filter happyhour campaign variants
+SELECT
+  journey_id,
+  journey_name,
+  sent_nb,
+  opening_nb,
+  click_nb
+FROM course14.gwz_mail
+WHERE journey_name LIKE '%210707_nl_happyhour%';
+
+-- filter Belgium segment (nlbe)
+SELECT
+  journey_id,
+  journey_name,
+  sent_nb,
+  opening_nb,
+  click_nb
+FROM course14.gwz_mail
+WHERE journey_name LIKE '%_nlbe_%'
+ORDER BY sent_nb DESC;
+
+-- filter main NL campaigns only
+SELECT *
+FROM course14.gwz_mail
+WHERE journey_name LIKE '%_nl_%'
+ORDER BY sent_nb DESC;
