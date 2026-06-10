@@ -1,0 +1,17 @@
+-- opening rate as a ratio
+SELECT *,
+  SAFE_DIVIDE(opening_nb, sent_nb) AS opening_rate
+FROM course14.gwz_mail
+WHERE journey_name LIKE '%_nl_%'
+ORDER BY opening_rate DESC;
+
+-- opening rate as a percentage
+SELECT
+  journey_id,
+  journey_name,
+  sent_nb,
+  opening_nb,
+  ROUND(SAFE_DIVIDE(opening_nb, sent_nb) * 100, 2) AS opening_rate_pct
+FROM course14.gwz_mail
+WHERE journey_name LIKE '%_nl_%'
+ORDER BY opening_rate_pct DESC;
