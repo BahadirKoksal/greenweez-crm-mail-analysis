@@ -1,0 +1,11 @@
+-- full table preview
+SELECT *
+FROM course14.gwz_mail;
+
+-- check for duplicate journey_ids
+SELECT DISTINCT journey_id
+FROM course14.gwz_mail;
+
+-- check for duplicate journey_names
+SELECT DISTINCT journey_name
+FROM course14.gwz_mail;
